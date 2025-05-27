@@ -1,0 +1,27 @@
+services:
+  php:
+    build:
+      context: ./php
+      dockerfile: Dockerfile
+
+    container_name: matheus-ifsp-php
+    restart: always
+    volumes:
+      - ./web:/var/www/html/
+    networks:
+      - lamp-network
+    ports:
+      - "80:80"
+    links:
+      - mysql
+      - postgres
+
+  postgres:
+    image: postgres:12
+    container_name: matheus-ifsp-pgsql
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postdba
+      POSTGRES_USER: postgres
+    ports:
+      - "5432:5432"
