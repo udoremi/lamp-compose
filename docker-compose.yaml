@@ -77,7 +77,7 @@ services:
       - lamp-network
 
 networks:
-  lamp_network:
+  lamp-network:
     driver: bridge
 
 volumes:
